@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import Cards from './components/Cards/Cards';
+import Nav from './components/Nav/Nav';
+import About from './views/about/about';
+import Detail from './views/detail/detail';
+import ErrorPage from './views/errorPage/errorPage.jsx'
+import FormLogin from './components/Form/Form';
+import axios from 'axios';
+import { useState } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import "./App.css";
+import Favourites from './components/Favourites/Favourites';
+import { useDispatch } from 'react-redux';
+import { removeFav } from './redux/actions';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+   const [characters, setCharacters] = useState([]);
+   const location = useLocation();
+   const dispatch= useDispatch()
+   
+   function onSearch(id) {
+      axios(`https://rickandmortyapi.com/api/character/${id}`)
+         .then(({ data }) => {
+            if (data.name) {
+               const characterExists = characters.find(character => character.id === data.id);
+               if (characterExists) {
+                  window.alert('¡Este personaje ya ha sido ingresado!');
+               } else {
+                  setCharacters((characters) => [...characters, data]);
+               }
+            } else {
+               window.alert('¡Busca un ID!');
+            }
+         });
+   };
+
+   function onClose(id) {
+      let deleted = characters.filter(character => character.id !== Number(id));
+      //para que se borre una card favourite cuando la borre desde home hay q usar removeFav()
+      // dispatch(removeFav(id));
+      setCharacters(deleted);
+   };
+
+   return (
+      <div className='app'>
+
+         {location.pathname === '/' ? (
+            <FormLogin />
+         ) : (
+            <div>
+
+               <Nav onSearch={onSearch} />
+               <Routes>
+
+                  <Route exact path='/' element={FormLogin} />
+                  <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+                  <Route path='/detail/:id' element={<Detail />} />
+                  <Route path='/about' element={<About />} />
+                  <Route path='/favourites' element={<Favourites />} />
+                  <Route path='*' element={<ErrorPage />} />
+                  {/* ARREGLAR IMAGEN ErrorPage */}
+
+               </Routes>
+            </div>
+         )}
+      </div>
+   )
 }
 
 export default App;

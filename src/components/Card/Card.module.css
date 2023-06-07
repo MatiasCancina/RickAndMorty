@@ -1,0 +1,76 @@
+.container {
+    margin: 20px;
+    align-items: center;
+    border: solid 2px rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgb(93, 1, 136);
+    box-shadow: 6px 2px 20px 10px rgb(190, 0, 255);
+    opacity: 0.98;
+    width: 17%;
+    height: 370px;
+    position: relative;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateZ(0) scale(1.1);
+}
+
+.container img {
+    border-radius: 10px;
+    width: 50%;
+    height: 50%;
+    border: solid 2px rgb(190, 0, 255);
+    box-shadow: 2px 2px 20px 15px rgba(174, 0, 255, 0.637);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+.container:hover img {
+    transform: translateZ(0) scale(1.1);
+}
+
+.container:hover img:hover {
+    cursor: pointer;
+}
+
+.closeButton {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    right: 15px;
+    position: absolute;
+    transform: translateZ(0);
+}
+
+.closeButton:hover {
+    background-color: rgb(236, 16, 16);
+    color: white;
+    cursor: pointer;
+}
+
+.id{
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 6%;
+}
+
+.cardName {
+    background-color: rgb(255, 1, 107);
+    color: white;
+    border-radius: 10px;
+    margin: 0px 50px 30px ;
+    padding: 5px;
+}
