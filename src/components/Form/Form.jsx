@@ -1,6 +1,7 @@
 import validation from "../utils/validation/validation";
 import { useState } from "react";
 import style from "./Form.module.css"
+import { useNavigate } from "react-router-dom";
 
 const FormLogin = () => {
 
@@ -13,6 +14,8 @@ const FormLogin = () => {
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         setUserData({
@@ -30,11 +33,19 @@ const FormLogin = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        
+                if(
+                    userData.email === 'email@email.com' &&
+                    userData.password === 'password1' 
+                ){
+                    setUserData({
+                        email: '',
+                        password: '',
+                    })
 
-        setUserData({
-            email: '',
-            password: '',
-        })
+                    navigate('/home');
+                }
+
     };
 
     return (

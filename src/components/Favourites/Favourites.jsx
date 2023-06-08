@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import Cards from "../Cards/Cards";
 import { filterCards, orderCards } from "../../redux/actions";
-import style from './Favourites.module.css';
 import { useState } from "react";
+import style from './Favourites.module.css';
 
-const Favourites = () => {
+const Favourites = ({ onClose, character }) => {
 
     const myFavourites = useSelector(state => state.myFavourites)
-
     const dispatch = useDispatch();
     const [aux, setAux] = useState(false);
+
 
     const handleOrder = (e) => {
         dispatch(orderCards(e.target.value));
@@ -21,20 +21,24 @@ const Favourites = () => {
     }
 
     return (
-        <div>
-            <select onChange={handleOrder}>
-                <option value="A">Ascendente</option>
-                <option value="D">Descendente</option>
-
-            </select>
-                <select name="" id="" onChange={handleFilter}>
-                    <option value="all">All </option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Genderless ">Genderless </option>
-                    <option value="unknown">unknown</option>
+        <div className={style.container}>
+            <div className={style.filterContainer}>
+                <select className={style.select} onChange={handleOrder}>
+                    <option disabled selected value="">ORDER</option>
+                    {['Ascendente', "Descendente"].map(order => (
+                        <option value={order}>{order}</option>
+                    ))}
                 </select>
-            <Cards characters={myFavourites}></Cards>
+
+                <select className={style.select} onChange={handleFilter}>
+                    <option disabled selected value="">GENDER</option>
+                    {['All', "Male", "Female", "Genderless", "unknown"].map(gender => (
+                        <option value={gender}>{gender}</option>
+                    ))}
+                </select>
+            </div>
+
+            <Cards characters={myFavourites} onClick={() => onClose(character.id)} />
         </div>
     )
 }

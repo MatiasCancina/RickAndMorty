@@ -1,0 +1,12 @@
+.aboutContainer{
+    color: whitesmoke;
+    background-color: rgba(196, 70, 255, 0.89);
+    border: 5px solid rgb(140, 1, 204);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 200px 400px;
+}

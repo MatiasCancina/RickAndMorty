@@ -1,17 +1,20 @@
 .container {
-    margin: 20px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     border: solid 2px rgb(255, 255, 255);
     border-radius: 10px;
     background-color: rgb(93, 1, 136);
     box-shadow: 6px 2px 20px 10px rgb(190, 0, 255);
     opacity: 0.98;
-    width: 17%;
-    height: 370px;
+    width: 350px;
+    height: 350px;
     position: relative;
     text-align: center;
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
+    gap: 10px;
 }
 
 .container:hover {
@@ -27,6 +30,7 @@
     transform-style: preserve-3d;
     transition: transform 0.6s ease;
 }
+
 .container:hover img {
     transform: translateZ(0) scale(1.1);
 }
@@ -51,6 +55,7 @@
     margin-top: 10px;
     right: 15px;
     position: absolute;
+    top: 10px;
     transform: translateZ(0);
 }
 
@@ -60,17 +65,34 @@
     cursor: pointer;
 }
 
-.id{
+.favBtn {
+    width: 25px;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    font-size: large;
+}
+
+.favBtn:hover {
+    cursor: pointer;
+}
+
+.id {
     color: white;
-    display: flex;
-    align-items: flex-start;
-    margin-left: 6%;
+    text-align: end; 
+    margin-left: 250px;
 }
 
 .cardName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(255, 1, 107);
     color: white;
     border-radius: 10px;
-    margin: 0px 50px 30px ;
-    padding: 5px;
+    margin: 30px 0px 20px;
+    padding: 30px ;
+    max-width: 200px;
+    overflow: hidden;
+    font-size: small;
 }

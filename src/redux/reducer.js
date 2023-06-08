@@ -8,10 +8,16 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FAV:
-            return {
-                ...state,
-                myFavourites: [...state.allCharactersFav, action.payload],
-                allCharactersFav: [...state.allCharactersFav, action.payload]
+            if (state.myFavourites.find(fav => fav.id === action.payload.id)) {
+                return {
+                    ...state
+                }
+            } else {
+                return {
+                    ...state,
+                    myFavourites: [...state.allCharactersFav, action.payload],
+                    allCharactersFav: [...state.allCharactersFav, action.payload]
+                }
             }
 
         case REMOVE_FAV:
@@ -22,8 +28,8 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case FILTER:
-            if(action.payload === 'all'){
-                return{
+            if (action.payload === 'All') {
+                return {
                     ...state,
                     myFavourites: state.allCharactersFav,
                 }
@@ -43,7 +49,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 myFavourites:
-                    action.payload === "A"
+                    action.payload === "Ascendente"
                         ? allCharactersFavCopy.sort((a, b) => a.id - b.id)
                         : allCharactersFavCopy.sort((a, b) => b.id - a.id)
             }

@@ -9,14 +9,12 @@ import { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import "./App.css";
 import Favourites from './components/Favourites/Favourites';
-import { useDispatch } from 'react-redux';
-import { removeFav } from './redux/actions';
+import CardsPage from './views/cardsPage/cardsPage';
 
 const App = () => {
 
    const [characters, setCharacters] = useState([]);
    const location = useLocation();
-   const dispatch= useDispatch()
    
    function onSearch(id) {
       axios(`https://rickandmortyapi.com/api/character/${id}`)
@@ -36,8 +34,6 @@ const App = () => {
 
    function onClose(id) {
       let deleted = characters.filter(character => character.id !== Number(id));
-      //para que se borre una card favourite cuando la borre desde home hay q usar removeFav()
-      // dispatch(removeFav(id));
       setCharacters(deleted);
    };
 
@@ -53,12 +49,11 @@ const App = () => {
                <Routes>
 
                   <Route exact path='/' element={FormLogin} />
-                  <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+                  <Route path='/home' element={<CardsPage characters={characters} onClose={onClose} />} />
                   <Route path='/detail/:id' element={<Detail />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/favourites' element={<Favourites />} />
                   <Route path='*' element={<ErrorPage />} />
-                  {/* ARREGLAR IMAGEN ErrorPage */}
 
                </Routes>
             </div>
