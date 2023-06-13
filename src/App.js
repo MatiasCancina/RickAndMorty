@@ -1,4 +1,3 @@
-import Cards from './components/Cards/Cards';
 import Nav from './components/Nav/Nav';
 import About from './views/about/about';
 import Detail from './views/detail/detail';

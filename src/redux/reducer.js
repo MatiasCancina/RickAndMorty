@@ -8,16 +8,19 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FAV:
-            if (state.myFavourites.find(fav => fav.id === action.payload.id)) {
+
+            const exists = state.myFavourites.find(fav => fav.id === action.payload.id);
+            if (exists) {   //? si ya esta marcado como favorito, no hace nada
                 return {
                     ...state
-                }
+                };
             } else {
+                const updatedAllCharactersFav = state.allCharactersFav.filter(char => char.id !== action.payload.id);    //? filtra a todos los que sean diferente al id ingresado
                 return {
                     ...state,
-                    myFavourites: [...state.allCharactersFav, action.payload],
-                    allCharactersFav: [...state.allCharactersFav, action.payload]
-                }
+                    myFavourites: [...state.myFavourites, action.payload],
+                    allCharactersFav: [...updatedAllCharactersFav, action.payload]
+                };
             }
 
         case REMOVE_FAV:
