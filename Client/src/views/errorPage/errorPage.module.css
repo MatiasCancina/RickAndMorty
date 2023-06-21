@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.subContainer {
+    opacity: 95%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 50px 10px rgb(174, 0, 255);
+}
+
+.subContainer img {
+    height: 750px;
+    border-radius: 50%;
+    
+}
