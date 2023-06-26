@@ -27,7 +27,8 @@ const Detail = () => {
                 <h3>STATUS | {character.status}</h3>
                 <h3>SPECIE | {character.species}</h3>
                 <h3>GENDER | {character.gender}</h3>
-                <h3>ORIGIN | {character.origin?.name}</h3>
+                <h3>FIRST SEEN | {character.origin?.name}</h3>
+                <h3>LAST SEEN | {character.location?.name}</h3>
             </div>
 
             <div className={style.imageContainer}>
