@@ -8,7 +8,7 @@ const about = () => {
                 <p className={style.nombre}>Matias Cancina</p>
             <div className={style.imagenAbout}></div>
             <div>
-                <p className={style.info}>Tengo 18 años, soy de Buenos Aires, Argentina. Empecé a estudiar en SoyHenry a principios de marzo porque me interesaba el desarrollo de paginas web y esta fue la primera que hice con los conocimientos que fui aprendiendo en estos meses.</p>
+                <p className={style.info}>I'm 18-year-old web developer student from Buenos Aires, Argentina. I've been learning web development at SoyHenry since March. During my time there, I've gained a strong grasp of programming languages like HTML, CSS, and JavaScript.</p>
             </div>
         </div>
     )

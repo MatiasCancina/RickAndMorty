@@ -3,8 +3,8 @@
 .aboutContainer {
     display: flex;
     flex-direction: column;
-    height: 660px;
     width: 400px;
+    height: 640px;
     background-color: rgb(93, 1, 136);
     border: solid 2px rgb(255, 255, 255);
     align-items: center;

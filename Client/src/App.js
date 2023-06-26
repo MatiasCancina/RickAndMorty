@@ -22,7 +22,7 @@ const App = () => {
             const characterExists = characters.find(character => character.id === response.data.character.id);
 
             if (characterExists) {
-               window.alert('¡Este personaje ya ha sido ingresado!');
+               window.alert('This character has already been entered!');
             } else {
                setCharacters((characters) => [...characters, response.data.character]);
             }
