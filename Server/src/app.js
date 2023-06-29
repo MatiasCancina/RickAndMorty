@@ -1,3 +1,4 @@
+require('dotenv/config')
 const { router } = require('./routes/index.js')
 const express = require('express');
 const morgan = require('morgan')
@@ -8,7 +9,6 @@ server.use(express.urlencoded({ extended: true }))
 server.use(express.json()) //? middleware 
 server.use(morgan('dev'))
 server.use(cors({origin: 'http://localhost:3000'}))
-
 
 server.use('/rickandmorty', router) //? middleware que agrega "/rickandmorty" antes de cada ruta
 
