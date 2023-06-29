@@ -16,7 +16,6 @@ export const addFav = (character) => {
     };
 };
 
-
 export const removeFav = (id) => {
     try {
         const URL = 'http://localhost:3001/rickandmorty/fav/' + id;

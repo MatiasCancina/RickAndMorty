@@ -5,10 +5,13 @@ import style from "./about.module.css"
 const about = () => {
     return (
         <div className={style.aboutContainer}>
-                <p className={style.nombre}>Matias Cancina</p>
+
+            <p className={style.nombre}>Matias Cancina</p>
+
             <div className={style.imagenAbout}></div>
+
             <div>
-                <p className={style.info}>I'm 18-year-old web developer student from Buenos Aires, Argentina. I've been learning web development at SoyHenry since March. During my time there, I've gained a strong grasp of programming languages like HTML, CSS, and JavaScript.</p>
+                <p className={style.info}>I'm 18-year-old web developer student from Buenos Aires, Argentina. I've been learning web development at SoyHenry since March. During my time there, I've gained a strong grasp of programming languages like JavaScript, HTML and CSS.</p>
             </div>
         </div>
     )

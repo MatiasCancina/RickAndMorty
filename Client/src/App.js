@@ -3,12 +3,14 @@ import About from './views/about/about';
 import Detail from './views/detail/detail';
 import ErrorPage from './views/errorPage/errorPage.jsx'
 import FormLogin from './components/Form/Form';
+import Favorites from './components/Favorites/Favorites';
+import CardsPage from './views/cardsPage/cardsPage';
+
 import axios from 'axios';
 import { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+
 import "./App.css";
-import Favorites from './components/Favorites/Favorites';
-import CardsPage from './views/cardsPage/cardsPage';
 
 const App = () => {
 
