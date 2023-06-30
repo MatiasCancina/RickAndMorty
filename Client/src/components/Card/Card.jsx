@@ -24,15 +24,6 @@ const Card = (props) => {
       });
    }, [myFavorites, character.id]);
 
-   // useEffect(() => {
-   //    for (let i = 0; i < myFavorites.length; i++) {
-   //       if (myFavorites[i].id === id) {
-   //          setIsFav(true);
-   //          break;
-   //       }
-   //    }
-   // }, [myFavorites, id]);
-
    const handleFavorite = () => {
       if (!isFav) {
          dispatch(addFav(character));

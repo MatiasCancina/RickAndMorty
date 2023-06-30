@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from 'axios'
 import style from "./Form.module.css"
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormLogin = () => {
 
@@ -43,7 +44,17 @@ const FormLogin = () => {
                 email: '',
                 password: ''
             })
-        } else alert('Credenciales invalidas')
+        } else
+        Swal.fire({
+            title: 'Credenciales invalidas',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            },
+            position:"top"
+          })    
     };
 
     return (

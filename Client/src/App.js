@@ -5,6 +5,7 @@ import ErrorPage from './views/errorPage/errorPage.jsx'
 import FormLogin from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 import CardsPage from './views/cardsPage/cardsPage';
+import Swal from "sweetalert2";
 
 import axios from 'axios';
 import { useState } from 'react';
@@ -24,13 +25,31 @@ const App = () => {
             const characterExists = characters.find(character => character.id === response.data.character.id);
 
             if (characterExists) {
-               window.alert('This character has already been entered!');
+               Swal.fire({
+                  title: 'This character has already been entered!',
+                  showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  },
+                  position:"top"
+                })    
             } else {
                setCharacters((characters) => [...characters, response.data.character]);
             }
          }
       } catch (error) {
-         alert('¡Invalid ID!');
+         Swal.fire({
+            title: 'Invalid ID!',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            },
+            position:"top"
+          })
       }
    };
 
