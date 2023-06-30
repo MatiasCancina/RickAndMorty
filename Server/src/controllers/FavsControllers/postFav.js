@@ -1,7 +1,7 @@
 const { Favorite } = require('../../DB_connection');
 
 const postFav = async (req, res) => {
-    const { id, name, origin, status, image, species, gender } = req.body;
+    const { id, name, origin, status, image, species, gender } = req.body.character;
 
     try {
         if (!name || !origin || !status || !image || !species || !gender) {

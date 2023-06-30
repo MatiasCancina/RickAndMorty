@@ -22,6 +22,7 @@ const Favorites = ({ onClose, character }) => {
     return (
         <div className={style.container}>
             <div className={style.filterContainer}>
+
                 <select className={style.select} onChange={handleOrder}>
                     <option disabled selected value="">ORDER</option>
                     {['Ascendente', "Descendente"].map(order => (
@@ -35,6 +36,7 @@ const Favorites = ({ onClose, character }) => {
                         <option value={gender}>{gender}</option>
                     ))}
                 </select>
+                
             </div>
 
             <Cards characters={myFavorites} onClick={() => onClose(character.id)} />

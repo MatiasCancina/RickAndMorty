@@ -3,7 +3,7 @@ const { sequelize } = require('./DB_connection');
 
 const PORT = process.env.PORT;
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
    .then(() => {
       console.log('Tablas creadas en la base de datos.');
    })
