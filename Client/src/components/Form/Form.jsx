@@ -46,7 +46,7 @@ const FormLogin = () => {
             })
         } else
         Swal.fire({
-            title: 'Credenciales invalidas',
+            title: 'Invalid credentials',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
