@@ -8,24 +8,23 @@ const postFav = async (req, res) => {
             return res.status(401).json({ error: 'Missing data' })
         }
 
-        else {
-            await Favorite.findOrCreate({
-                where: { name: name },
-                defaults: {
-                    id,
-                    name,
-                    origin,
-                    status,
-                    image,
-                    species,
-                    gender
-                }
-            })
+        await Favorite.findOrCreate({
+            where: { name: name },
+            defaults: {
+                id,
+                name,
+                origin,
+                status,
+                image,
+                species,
+                gender
+            }
+        })
 
-            const allFavs = await Favorite.findAll()
+        const allFavs = await Favorite.findAll()
 
-            return res.status(200).json({ favorites: allFavs })
-        }
+        return res.status(200).json({ favorites: allFavs })
+
     } catch (error) {
         return res.status(500).json({ error: error.message })
     }

@@ -6,25 +6,34 @@ import style from './Card.module.css';
 
 const Card = (props) => {
    const { character, onClose } = props;
+
    const myFavorites = useSelector(state => state.myFavorites)
 
    const navigate = useNavigate();
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
    const location = useLocation();
 
    const isOpen = true;
    const [isFav, setIsFav] = useState(false);
 
    useEffect(() => {
-      myFavorites?.forEach((fav) => {
+      Array.isArray(myFavorites) && myFavorites?.forEach((fav) => {
          if (fav.id === character.id) {
             setIsFav(true);
          }
       });
    }, [myFavorites, character.id]);
 
+   // useEffect(() => {
+   //    for (let i = 0; i < myFavorites.length; i++) {
+   //       if (myFavorites[i].id === id) {
+   //          setIsFav(true);
+   //          break;
+   //       }
+   //    }
+   // }, [myFavorites, id]);
+
    const handleFavorite = () => {
-      console.log(character);
       if (!isFav) {
          dispatch(addFav(character));
          setIsFav(true);

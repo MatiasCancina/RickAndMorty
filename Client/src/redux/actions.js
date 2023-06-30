@@ -9,9 +9,10 @@ export const addFav = (character) => {
     const URL = 'http://localhost:3001/rickandmorty/fav';
     return async (dispatch) => {
         const response = await axios.post(URL, { character })
+        console.log(response.data.favorites);
         return dispatch({
             type: ADD_FAV,
-            payload: response.data,
+            payload: response.data.favorites
         });
     };
 };
@@ -21,9 +22,10 @@ export const removeFav = (id) => {
         const URL = 'http://localhost:3001/rickandmorty/fav/' + id;
         return async (dispatch) => {
             const response = await axios.delete(URL)
+            console.log(response.data.favorites);
             return dispatch({
                 type: REMOVE_FAV,
-                payload: response.data,
+                payload: response.data.favorites
             });
         };
     } catch (error) {

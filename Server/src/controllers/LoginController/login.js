@@ -12,7 +12,7 @@ const login = async (req, res) => {
         })
 
         if (!findUser)
-            return res.status(404).json({ error: 'User not found' })
+            return res.status(204).json({ access: false, error: 'User not found' })
 
         if (findUser.password !== password) {
             return res.status(403).json({ error: 'Incorrect password' })

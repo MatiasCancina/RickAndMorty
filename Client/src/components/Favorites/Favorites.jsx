@@ -4,7 +4,7 @@ import { filterCards, orderCards } from "../../redux/actions";
 import Cards from "../Cards/Cards";
 import style from './Favorites.module.css';
 
-const Favorites = ({ onClose, character }) => {
+const Favorites = ({ onClose }) => {
 
     const myFavorites = useSelector(state => state.myFavorites)
     const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Favorites = ({ onClose, character }) => {
         dispatch(filterCards(e.target.value))
     }
 
+    console.log(myFavorites);
     return (
         <div className={style.container}>
             <div className={style.filterContainer}>
@@ -26,20 +27,19 @@ const Favorites = ({ onClose, character }) => {
                 <select className={style.select} onChange={handleOrder}>
                     <option disabled selected value="">ORDER</option>
                     {['Ascendente', "Descendente"].map(order => (
-                        <option value={order}>{order}</option>
+                        <option key={Math.random()*10} value={order}>{order}</option>
                     ))}
                 </select>
 
                 <select className={style.select} onChange={handleFilter}>
                     <option disabled selected value="">GENDER</option>
                     {['All', "Male", "Female", "Genderless", "unknown"].map(gender => (
-                        <option value={gender}>{gender}</option>
+                        <option key={Math.random()*10} value={gender}>{gender}</option>
                     ))}
                 </select>
-                
-            </div>
 
-            <Cards characters={myFavorites} onClick={() => onClose(character.id)} />
+            </div>
+            <Cards characters={myFavorites} onClick={onClose} />
         </div>
     )
 }
